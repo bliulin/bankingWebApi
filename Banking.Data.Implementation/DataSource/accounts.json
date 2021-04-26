@@ -1,0 +1,23 @@
+[
+  {
+    "resourceId": "450ffbb8-9f11-4ec6-a1e1-df48aefc82ef",
+    "product": "Betaalrekening",
+    "iban": "NL69INGB0123456789",
+    "name": "Hr A van Dijk , Mw B Mol-van Dijk",
+    "currency": "EUR"
+  },
+  {
+    "resourceId": "450ffbb8-9f11-4ec6-a1e1-df48aefc82ef",
+    "product": "Betaalrekening",
+    "iban": "NL69INGB0123456290",
+    "name": "Hr A van Dijk , Mw B Mol-van Dijk",
+    "currency": "RON"
+  },
+  {
+    "resourceId": "1e75caa1-1f2f-4df3-aabc-2cf91bd8a316",
+    "product": "Betaalrekening",
+    "iban": "RO49INGB0123459999",
+    "name": "Daniel Popescu",
+    "currency": "RON"
+  }
+]
