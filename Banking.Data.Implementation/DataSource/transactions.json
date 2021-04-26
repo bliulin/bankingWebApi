@@ -30,28 +30,28 @@
   {
     "iban": "NL69INGB0123456789",
     "transactionId": 60,
-    "amount": 13.00,
+    "amount": 13.50,
     "categoryId": 1,
     "transactionDate": "2021-03-23"
   },
   {
     "iban": "NL69INGB0123456789",
     "transactionId": 70,
-    "amount": 17.00,
+    "amount": 17.20,
     "categoryId": 4,
     "transactionDate": "2021-03-23"
   },
   {
     "iban": "NL69INGB0123456789",
     "transactionId": 80,
-    "amount": 11.00,
+    "amount": 11.90,
     "categoryId": 5,
     "transactionDate": "2021-03-23"
   },
   {
     "iban": "NL69INGB0123456789",
     "transactionId": 90,
-    "amount": 77.00,
+    "amount": 77.13,
     "categoryId": 3,
     "transactionDate": "2021-03-23"
   },
@@ -68,5 +68,12 @@
     "amount": 1.00,
     "categoryId": 5,
     "transactionDate": "2021-04-23"
+  },
+  {
+    "iban": "NL69INGB0123456290",
+    "transactionId": 210,
+    "amount": 14.45,
+    "categoryId": 5,
+    "transactionDate": "2021-03-23"
   }
 ]

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Banking.Business.Contracts;
 using Banking.Data.Contracts;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -14,9 +15,9 @@ namespace BankingWebApi.Controllers
     public class AccountsController : ControllerBase
     {
         private readonly ILogger<AccountsController> _logger;
-        private readonly IAccountsDataProvider _accountsDataProvider;
+        private readonly IAccountService _accountsDataProvider;
 
-        public AccountsController(ILogger<AccountsController> logger, IAccountsDataProvider accountsDataProvider)
+        public AccountsController(ILogger<AccountsController> logger, IAccountService accountsDataProvider)
         {
             _logger = logger;
             _accountsDataProvider = accountsDataProvider;

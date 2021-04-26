@@ -44,6 +44,7 @@ namespace BankingWebApi
             services.AddTransient<ILocalFileProvider, LocalFileProvider>((serviceProvider) => new LocalFileProvider(env.ContentRootPath));
             services.AddTransient<IAccountsDataProvider, AccountsDataProvider>();
             services.AddTransient<ITransactionsDataProvider, TransactionsDataProvider>();
+            services.AddTransient<IAccountService, AccountService>();
             services.AddTransient<ITransactionService, TransactionService>();
         }
 

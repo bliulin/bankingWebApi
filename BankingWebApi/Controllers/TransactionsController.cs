@@ -20,10 +20,11 @@ namespace BankingWebApi.Controllers
         }
 
         [HttpGet]
+        [Route("report/{iban}")]
         public async Task<IActionResult> Report(string iban)
         {
             var report = await _transactionService.GetTransactionsForLastMonth(DateTime.Now, iban);
-            return Ok(report);
+            return Ok(report.OrderBy(r => r.CategoryName));
         }
     }
 }
