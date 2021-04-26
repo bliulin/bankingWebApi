@@ -24,7 +24,7 @@ namespace Banking.Data.Implementation
             string accountsJson = await _fileProvider.GetFileContents("accounts.json");
 
             var accounts = JsonConvert.DeserializeObject<List<Account>>(accountsJson);
-            var clientAccounts = clientId.CompareTo(Guid.Empty) == 0 ? 
+            var clientAccounts = clientId.CompareTo(Guid.Empty) == 0 ?
                 accounts :
                 accounts.Where(account => account.ResourceId == clientId);
 
