@@ -63,10 +63,10 @@ namespace BankingWebApi
             });
 
             app.UseSwagger();
-            app.UseSwaggerUI(c =>
+            app.UseSwaggerUI(options =>
             {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My Banking WebAPI V1");
-                c.RoutePrefix = string.Empty;
+                options.RoutePrefix = "swagger/ui";
+                options.SwaggerEndpoint("/swagger/v1/swagger.json", "My Banking WebAPI V1");
             });
         }
     }
