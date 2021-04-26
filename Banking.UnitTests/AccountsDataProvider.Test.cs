@@ -14,7 +14,6 @@ namespace Banking.UnitTests
         [SetUp]
         public void Setup()
         {
-            
         }
 
         [Test]

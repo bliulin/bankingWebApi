@@ -27,9 +27,10 @@ namespace Banking.Business.Implementation
             var transactions = await _transactionsDataProvider.GetTransactions(accountIban);
             string accountCurrency = await _accountsDataProvider.GetAccountCurrency(accountIban);
 
-            //TODO: filter by date
+            int previousMonth = offset.Month - 1;
 
             var result = transactions
+                .Where(t => DateTime.Parse(t.TransactionDate).Month == previousMonth)
                 .GroupBy(t => t.CategoryId)
                 .Select(group => new TransactionReportModel
                 {

@@ -26,7 +26,8 @@ namespace Banking.Data.Implementation
 
             if (account == null)
             {
-                throw new ArgumentException($"No account was found for IBAN: {accountIban}");
+                return null;
+                //throw new ArgumentException($"No account was found for IBAN: {accountIban}");
             }
 
             return account.Currency;
