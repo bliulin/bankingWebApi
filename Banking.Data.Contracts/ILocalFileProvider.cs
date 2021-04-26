@@ -8,5 +8,7 @@ namespace Banking.Data.Contracts
     public interface ILocalFileProvider
     {
         Task<string> GetFileContents(string filename);
+
+        //Task<IEnumerable<T>> GetEntities()
     }
 }

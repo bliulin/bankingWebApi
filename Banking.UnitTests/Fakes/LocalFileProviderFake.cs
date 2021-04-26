@@ -12,13 +12,19 @@ namespace Banking.UnitTests.Fakes
     {
         public List<Account> Accounts { get; set; } = new List<Account>();
 
+        public List<Transaction> Transactions { get; set; } = new List<Transaction>();
+
         public Task<string> GetFileContents(string filename)
         {
             string contents = string.Empty;
 
             if (filename == "accounts.json")
             {
-                contents = JsonConvert.SerializeObject(Accounts);               
+                contents = JsonConvert.SerializeObject(Accounts);
+            }
+            else if (filename == "transactions.json")
+            {
+                contents = JsonConvert.SerializeObject(Transactions);
             }
 
             return Task.FromResult(contents);
