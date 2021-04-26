@@ -20,5 +20,9 @@
     <ProjectReference Include="..\Banking.Data.Implementation\Banking.Data.Implementation.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Properties\PublishProfiles\" />
+  </ItemGroup>
+
 
 </Project>

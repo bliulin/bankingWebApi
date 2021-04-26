@@ -30,9 +30,14 @@ namespace Banking.Data.Implementation
 
         private async Task<IEnumerable<T>> GetFileContents<T>(string filename)
         {
+            string dataSourceFolder = "DataSource";
+
+#if DEBUG
+            dataSourceFolder = @"bin\Debug\netcoreapp3.1\DataSource";
+#endif
+
             string filePath = Path.Combine(_contentRootPath,
-                @"bin\Debug\netcoreapp3.1\DataSource",
-                //"DataSource",
+                dataSourceFolder,
                 filename);
 
             string contents = await File.ReadAllTextAsync(filePath);
