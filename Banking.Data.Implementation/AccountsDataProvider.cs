@@ -19,6 +19,21 @@ namespace Banking.Data.Implementation
             _fileProvider = fileProvider;
         }
 
+        public async Task<string> GetAccountCurrency(string accountIban)
+        {
+            string accountsJson = await _fileProvider.GetFileContents("accounts.json");
+
+            var accounts = JsonConvert.DeserializeObject<List<Account>>(accountsJson);
+            var account = accounts.FirstOrDefault(account => account.Iban == accountIban);
+
+            if (account == null)
+            {
+                throw new ArgumentException($"No account was found for IBAN: {accountIban}");
+            }
+
+            return account.Currency;
+        }
+
         public async Task<IEnumerable<Account>> GetClientAccounts(Guid clientId)
         {
             string accountsJson = await _fileProvider.GetFileContents("accounts.json");

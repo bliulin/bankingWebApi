@@ -9,5 +9,7 @@ namespace Banking.Data.Contracts
     public interface IAccountsDataProvider
     {
         Task<IEnumerable<Account>> GetClientAccounts(Guid clientId);
+
+        Task<string> GetAccountCurrency(string accountIban);
     }
 }

@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Banking.Business.Contracts;
+using Banking.Business.Implementation;
 using Banking.Data.Contracts;
 using Banking.Data.Implementation;
 using Microsoft.AspNetCore.Builder;
@@ -41,6 +43,8 @@ namespace BankingWebApi
 
             services.AddTransient<ILocalFileProvider, LocalFileProvider>((serviceProvider) => new LocalFileProvider(env.ContentRootPath));
             services.AddTransient<IAccountsDataProvider, AccountsDataProvider>();
+            services.AddTransient<ITransactionsDataProvider, TransactionsDataProvider>();
+            services.AddTransient<ITransactionService, TransactionService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

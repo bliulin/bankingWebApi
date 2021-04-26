@@ -14,6 +14,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Banking.Business.Contracts\Banking.Business.Contracts.csproj" />
+    <ProjectReference Include="..\Banking.Business.Implementation\Banking.Business.Implementation.csproj" />
     <ProjectReference Include="..\Banking.Data.Contracts\Banking.Data.Contracts.csproj" />
     <ProjectReference Include="..\Banking.Data.Implementation\Banking.Data.Implementation.csproj" />
   </ItemGroup>
