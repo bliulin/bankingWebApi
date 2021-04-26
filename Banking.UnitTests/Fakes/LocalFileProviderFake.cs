@@ -3,6 +3,7 @@ using Banking.Data.Contracts.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -14,20 +15,14 @@ namespace Banking.UnitTests.Fakes
 
         public List<Transaction> Transactions { get; set; } = new List<Transaction>();
 
-        public Task<string> GetFileContents(string filename)
+        public Task<IEnumerable<Account>> GetAccounts()
         {
-            string contents = string.Empty;
+            return Task.FromResult(Accounts.AsEnumerable());
+        }
 
-            if (filename == "accounts.json")
-            {
-                contents = JsonConvert.SerializeObject(Accounts);
-            }
-            else if (filename == "transactions.json")
-            {
-                contents = JsonConvert.SerializeObject(Transactions);
-            }
-
-            return Task.FromResult(contents);
+        public Task<IEnumerable<Transaction>> GetTransactions()
+        {
+            return Task.FromResult(Transactions.AsEnumerable());
         }
     }
 }

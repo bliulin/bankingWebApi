@@ -20,33 +20,8 @@ namespace Banking.Data.Implementation
 
         public async Task<IEnumerable<Transaction>> GetTransactions(string accountIban)
         {
-            string transactionsJson = await _fileProvider.GetFileContents("transactions.json");
-
-            //TODO make fileProvider generic and return data directly
-            var transactions = JsonConvert.DeserializeObject<List<Transaction>>(transactionsJson);
-
+            var transactions = await _fileProvider.GetTransactions();
             return transactions.Where(t => t.Iban == accountIban);
         }
-
-        //public async Task<IEnumerable<Transaction>> GetTransactionsForLastMonth(DateTimeOffset offset, string accountIban)
-        //{
-        //    string transactionsJson = await _fileProvider.GetFileContents("transactions.json");
-
-        //    //TODO make fileProvider generic and return data directly
-        //    var transactions = JsonConvert.DeserializeObject<List<Transaction>>(transactionsJson);
-
-        //    int previousMonth = offset.Month - 1;
-        //    //var result = transactions
-        //    //    .Where(t => t.Iban == accountIban)
-        //    //    .Where(t=>DateTime.Parse(t.TransactionDate).Month == previousMonth)
-        //    //    .GroupBy()
-
-        //    var result = transactions
-        //        .GroupBy(t => t.CategoryId, (categId) => 
-        //            new 
-        //            {
-                        
-        //            });
-        //}
     }
 }

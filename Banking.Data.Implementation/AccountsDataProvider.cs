@@ -21,9 +21,7 @@ namespace Banking.Data.Implementation
 
         public async Task<string> GetAccountCurrency(string accountIban)
         {
-            string accountsJson = await _fileProvider.GetFileContents("accounts.json");
-
-            var accounts = JsonConvert.DeserializeObject<List<Account>>(accountsJson);
+            var accounts = await _fileProvider.GetAccounts();
             var account = accounts.FirstOrDefault(account => account.Iban == accountIban);
 
             if (account == null)
@@ -36,9 +34,7 @@ namespace Banking.Data.Implementation
 
         public async Task<IEnumerable<Account>> GetClientAccounts(Guid clientId)
         {
-            string accountsJson = await _fileProvider.GetFileContents("accounts.json");
-
-            var accounts = JsonConvert.DeserializeObject<List<Account>>(accountsJson);
+            var accounts = await _fileProvider.GetAccounts();
             var clientAccounts = clientId.CompareTo(Guid.Empty) == 0 ?
                 accounts :
                 accounts.Where(account => account.ResourceId == clientId);

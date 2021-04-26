@@ -1,4 +1,6 @@
 ﻿using Banking.Data.Contracts;
+using Banking.Data.Contracts.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -16,14 +18,26 @@ namespace Banking.Data.Implementation
             _contentRootPath = contentRootPath;
         }
 
-        public Task<string> GetFileContents(string filename)
+        public Task<IEnumerable<Account>> GetAccounts()
+        {
+            return GetFileContents<Account>("accounts.json");
+        }
+
+        public Task<IEnumerable<Transaction>> GetTransactions()
+        {
+            return GetFileContents<Transaction>("transactions.json");
+        }
+
+        private async Task<IEnumerable<T>> GetFileContents<T>(string filename)
         {
             string filePath = Path.Combine(_contentRootPath,
                 @"bin\Debug\netcoreapp3.1\DataSource",
                 //"DataSource",
                 filename);
 
-            return File.ReadAllTextAsync(filePath);
+            string contents = await File.ReadAllTextAsync(filePath);
+            var collection = JsonConvert.DeserializeObject<IEnumerable<T>>(contents);
+            return collection;
         }
     }
 }
