@@ -6,6 +6,7 @@ using Banking.Business.Contracts;
 using Banking.Business.Implementation;
 using Banking.Data.Contracts;
 using Banking.Data.Implementation;
+using BankingWebApi.HealthCheckers;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -35,7 +36,9 @@ namespace BankingWebApi
         {
             services.AddControllers();
 
-            services.AddHealthChecks();
+            services.AddHealthChecks()
+                .AddCheck<ReadinessHealthCheck>("readiness_health_check");
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Banking web API", Version = "v1" });
@@ -46,6 +49,9 @@ namespace BankingWebApi
             services.AddTransient<ITransactionsDataProvider, TransactionsDataProvider>();
             services.AddTransient<IAccountService, AccountService>();
             services.AddTransient<ITransactionService, TransactionService>();
+
+            GlobalAppSettings.BaseUrl = Configuration["AppConfig:BaseUrl"];
+            GlobalAppSettings.AccountsPath = Configuration["AppConfig:AccountsPath"];
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -65,6 +71,7 @@ namespace BankingWebApi
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapHealthChecks("/health");
             });
 
             app.UseSwagger();
